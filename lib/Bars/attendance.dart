@@ -15,124 +15,59 @@ class _attendance extends State<attendance> {
       children: [
 
 
-        Container(
-          width: 330,
+        const Row( children: [
 
-          padding: const EdgeInsets.all(10),
+            Icon(Icons.access_time, color: Colors.deepPurple, size: 18,),
+
+            SizedBox(width: 8),
+
+            Text("Mark Attendance", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold,),),
+          ],
+
+        ),
+
+        const SizedBox(height: 10),
+
+        Container(width: 330, padding: const EdgeInsets.all(10),
 
           decoration: BoxDecoration(
-            color: Colors.red.shade50,
-
-            border: Border.all(color: Colors.red, width: 1.5,),
-
-            borderRadius: BorderRadius.circular(8),
+            color: Colors.red.shade400,
+            borderRadius: BorderRadius.circular(10),
           ),
 
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
 
-                  const Icon(Icons.access_time, color: Colors.deepPurple, size: 18,),
+                  const Text("↪ Clock In: 12:44 PM",
 
-                  const SizedBox(width: 8),
+                    style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold,),
+                  ),
 
-                  const Text("Mark Attendance", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
+                  const Text("●  Working Duration: 4h 55m", style: TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold,),
                   ),
                 ],
               ),
 
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
 
-              Center(
-                child: Card(
-                  color: Colors.red.shade100,
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 12,
+                ),
 
-                  elevation: 2,
+                decoration: BoxDecoration(
+                  color: Colors.red.shade500,
+                  borderRadius: BorderRadius.circular(8),
+                ),
 
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+                child: const Center(
 
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 25,
-                      vertical: 15,
-                    ),
-
-                    child: Column(
-                      children: [
-
-                       Row(
-
-                         children: [
-
-                           const SizedBox(width: 35),
-
-                           const Icon(Icons.circle, color: Colors.green, size: 12,),
-
-                           const SizedBox(width: 15),
-
-                           Text(
-                          "You are checked inn",
-                          style: const TextStyle(
-                            fontSize: 12,
-                              fontWeight: FontWeight.bold
-
-                          ),
-                        ),
-                         ]),
-
-                        const SizedBox(height: 8),
-
-                        Text(
-                          "09:32 AM",
-                          style: const TextStyle(
-                            fontSize: 10,
-                              fontWeight: FontWeight.bold
-
-                          ),
-                        ),
-
-                        const SizedBox(height: 8),
-                        Text(
-                         "31 Aug 2026",
-                          style: const TextStyle(
-                            fontSize: 8,
-                            fontWeight: FontWeight.bold
-                          ),
-                        ),
-
-                        const SizedBox(height: 12),
-
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.red,
-                            foregroundColor: Colors.white,
-
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 30,
-                              vertical: 10,
-                            ),
-
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-
-                          onPressed: () {},
-
-                          child: const Text(
-                            "Clock Out",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  child: Text("↪  Clock Out", style: TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold,),
                   ),
                 ),
               ),
@@ -140,87 +75,80 @@ class _attendance extends State<attendance> {
           ),
         ),
 
-        const SizedBox(height: 20),
+        const SizedBox(height: 18),
 
+        Row(
+          children: [
 
-        _infoCard(
-          icon: Icons.business_center,
-          title: "Division",
-          value: "iAssist Innovations Labs",
+            Expanded(child: info(Icons.business_center, "Divsion", "iAssist Innovations Labs",),
+            ),
+
+            const SizedBox(width: 15),
+
+            Expanded(child: info(Icons.trending_up, "Vertcal", "IT & Infrastructure",),
+            ),
+          ],
         ),
 
-        const SizedBox(height: 12),
+        const SizedBox(height: 15),
 
+        Row(
+          children: [
 
-        _infoCard(
-          icon: Icons.trending_up,
-          title: "Vertical",
-          value: "IT & Infrastructure",
-        ),
+            Expanded(
 
-        const SizedBox(height: 12),
+              child: info(Icons.business, "Department", "IT & Infrastructure",),
+            ),
 
-        _infoCard(
-          icon: Icons.business,
-          title: "Department",
-          value: "IT & Infrastructure",
-        ),
+            const SizedBox(width: 15),
 
-        const SizedBox(height: 12),
-
-
-
-        _infoCard(
-          icon: Icons.people,
-          title: "Manager",
-          value: "Rajat Bansal",
+            Expanded(child: info(Icons.people, "Manager", "Rajat Bansal",),
+            ),
+          ],
         ),
       ],
     );
   }
 
-  Widget _infoCard({
-    required IconData icon,
-    required String title,
-    required String value,
-  }) {
-    return Container(
-      width: 330,
+   Widget info(
+      IconData icon,
+      String title,
+      String value,
+      ) {
 
-      padding: const EdgeInsets.symmetric(
-        horizontal: 12,
-        vertical: 11,
-      ),
 
-      decoration: BoxDecoration(
-        color: Colors.white,
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
 
-        border: Border.all(color: Colors.red, width: 1.5,),
+        Container(
 
-        borderRadius: BorderRadius.circular(8),
-      ),
+          padding: const EdgeInsets.all(7),
 
-      child: Row(
-        children: [
+          decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(6),),
 
-          Icon(icon, size: 20, color: Colors.red,),
+          child: Icon(icon, color: Colors.deepPurple,size: 17,),
 
-          const SizedBox(width: 12),
+        ),
 
-          Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+        const SizedBox(width: 8),
 
-                Text(title, style: const TextStyle(fontSize: 11, color: Colors.grey,),),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
 
-                const SizedBox(height: 3),
+              Text(title, style: const TextStyle(fontSize: 10, color: Colors.grey,),),
 
-                Text(value, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold,),
-                ),
-              ],
-            ),
+              const SizedBox(height: 3),
+
+              Text(value, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold,),
+
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

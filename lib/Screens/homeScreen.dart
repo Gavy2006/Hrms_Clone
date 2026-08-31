@@ -52,29 +52,29 @@ class _homeScreen extends State<homeScreen> {
                           ),
                         ),
 
-                        const SizedBox(height: 50),
+                        const SizedBox(height: 80),
 
                         calendar(),
                       ],
                     ),
                   ),
 
-                  const SizedBox(width: 45),
+                  const SizedBox(width: 35),
 
                   SizedBox(
-                    width: 330,
+                    width: 380,
 
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
 
-                          const SizedBox(height: 25),
+                          const SizedBox(height: 105),
 
 
                           attendance(),
 
-                          const SizedBox(height: 15),
+                          const SizedBox(height: 55),
 
                           birthday(),
 
