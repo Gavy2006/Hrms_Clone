@@ -17,6 +17,7 @@ class _ApplyLeave extends State<ApplyLeave> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+
       appBar: const topbar(),
 
       body: Row(
@@ -27,6 +28,7 @@ class _ApplyLeave extends State<ApplyLeave> {
           Expanded(child: Container( color: const Color(0xFFF7F9FC),
 
               child: Center(
+
                 child: SingleChildScrollView(
 
                   child: Container(
@@ -57,17 +59,10 @@ class _ApplyLeave extends State<ApplyLeave> {
                             Container( padding: const EdgeInsets.all(10),
 
                               decoration: BoxDecoration(
-                                color: const Color(0xFFD6E9FF),
-                                borderRadius:
-                                BorderRadius.circular(10),
+                                color: const Color(0xFFD6E9FF), borderRadius: BorderRadius.circular(10),
                               ),
 
-                              child: const Icon(
-                                Icons.calendar_month,
-                                color: Color(0xFF125AB5),
-                                size: 30,
-                              ),
-                            ),
+                              child: const Icon(Icons.calendar_month, color: Color(0xFF125AB5), size: 30,),),
 
                             const SizedBox(width: 15),
 
@@ -456,6 +451,8 @@ class _ApplyLeave extends State<ApplyLeave> {
                             child: const Text("Submit Leave Application", style: TextStyle(fontWeight: FontWeight.bold,),),
                           ),
                         ),
+
+
                       ],
                     ),
                   ),
