@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hrms_clone/Screens/ApplyLeave.dart';
+import 'package:hrms_clone/Screens/AttendanceRegularization.dart';
 
 import 'Screens/homeScreen.dart';
 
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const homeScreen(),
+      home: const ApplyLeave(),
     );
   }
 }

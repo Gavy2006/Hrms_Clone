@@ -16,7 +16,9 @@ class _sidebarState extends State<sidebar> {
     return NavigationRail(
       extended: true,
 
-      minExtendedWidth: 180,
+      groupAlignment: -0.8,
+      leading: const SizedBox(height: 10),
+      minExtendedWidth: 210,
 
       backgroundColor: const Color(0xFF125AB5),
       selectedIconTheme: const IconThemeData(color: Colors.blue, size: 22,),
