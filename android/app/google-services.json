@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "973211584327",
+    "project_id": "hrmsclone",
+    "storage_bucket": "hrmsclone.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973211584327:android:6b14b07f6518cd72482e62",
+        "android_client_info": {
+          "package_name": "com.example.hrms_clone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv8sV_DlcOqWyzLZH6Zap6FHRLFBP0I3Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
