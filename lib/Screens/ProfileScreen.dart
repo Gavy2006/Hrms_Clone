@@ -11,6 +11,12 @@ class Profilescreen extends StatefulWidget {
 
 class _Profilescreen extends State<Profilescreen> {
 
+  bool currentAddressOpen = false;
+  bool permanentAddressOpen = false ;
+  bool managerdetails = false ;
+  bool familymembers = false ;
+  bool emergencycontacts = false ;
+  bool organizationaldetails = false ;
   @override
   Widget build(BuildContext context) {
 
@@ -315,7 +321,7 @@ class _Profilescreen extends State<Profilescreen> {
                                 const SizedBox(height: 6),
 
                                 Container(
-                                  height: 270,
+                                  height: 290,
                                   width: double.infinity,
 
                                   decoration: BoxDecoration(
@@ -332,7 +338,14 @@ class _Profilescreen extends State<Profilescreen> {
                                     ],
                                   ),
 
-                                  child: Row(
+
+                                  child: Column(
+
+
+
+                               children: [
+
+                                 Row(
                                     crossAxisAlignment: CrossAxisAlignment.start ,
                                     children: [
 
@@ -349,6 +362,137 @@ class _Profilescreen extends State<Profilescreen> {
                                       const SizedBox(width: 15),
                                     ],
                                   ),
+
+
+                                 const SizedBox(height: 20,) ,
+
+                                 Column(
+
+                                   children: [
+
+
+                                     Row(
+
+                                       children: [
+
+                                         const SizedBox(width: 40,) ,
+                                         SizedBox(width: 450,
+                                           height: 60,
+
+                                           child: TextField(decoration: InputDecoration(hintText: "FullName", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                prefixIcon: Icon(Icons.person , color: Colors.purpleAccent,) ),),
+                                         ),
+
+                                         const SizedBox(width: 30),
+
+                                         SizedBox(
+                                           width: 450,
+                                           height: 60,
+
+
+                                           child: TextField(decoration: InputDecoration(hintText: "Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                           ), prefixIcon: Icon(Icons.email, color: Colors.purpleAccent,) , ),),
+                                         ),
+
+                                       ],
+                                     ) ,
+
+
+                                     const SizedBox(height: 10,) ,
+
+                                     Row(
+
+                                       children: [
+
+                                         const SizedBox(width: 40,) ,
+                                         SizedBox(width: 450,
+                                           height: 60,
+
+                                           child: TextField(decoration: InputDecoration(hintText: "Phone Number", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                             prefixIcon: Icon(Icons.call , color: Colors.purpleAccent , ) ,),),
+                                         ),
+
+                                         const SizedBox(width: 30),
+
+                                         SizedBox(
+                                           width: 450,
+                                           height: 60,
+
+
+                                           child: TextField(decoration: InputDecoration(hintText: "Alternate Phone", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                           ), prefixIcon: Icon(Icons.phone_android , color: Colors.purpleAccent,) , ),),
+                                         ),
+
+                                       ],
+                                     ) ,
+
+                                     const SizedBox(height: 10,) ,
+
+
+                                     Row(
+
+                                       children: [
+
+                                         const SizedBox(width: 40,) ,
+                                         SizedBox(width: 450,
+                                           height: 60,
+
+                                           child: TextField(decoration: InputDecoration(hintText: "Personal Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                             prefixIcon: Icon(Icons.email , color: Colors.purpleAccent,) ,),),
+                                         ),
+
+                                         const SizedBox(width: 30),
+
+                                         SizedBox(
+                                           width: 450,
+                                           height: 60,
+
+
+                                           child: TextField(decoration: InputDecoration(hintText: "Date of Birth", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                           ), prefixIcon: Icon(Icons.calendar_month , color: Colors.purpleAccent,) , ),),
+                                         ),
+
+                                       ],
+                                     ) ,
+
+                                     const SizedBox(height: 10,) ,
+                                     
+                                     
+                                     Row(
+                                       
+                                       children: [
+                                         const Spacer() ,
+
+                                         ElevatedButton(
+                                           onPressed: () {},
+                                           style: ElevatedButton.styleFrom(
+                                             backgroundColor: Colors.green,
+                                           ),
+                                           child: const Row(
+
+                                             mainAxisSize: MainAxisSize.min,
+
+
+                                             children: [
+
+                                               Icon(Icons.arrow_forward, color: Colors.white),
+                                               SizedBox(width: 5),
+
+                                               Text("Next", style: TextStyle(color: Colors.white),
+                                               ),
+                                             ],
+                                           ),
+                                         )
+
+
+                                       ],
+                                     )
+                                     
+                                     
+                                   ],
+                                 )
+                                  ])
+
                                 ),
 
                                 const SizedBox(height: 20),
@@ -380,7 +524,16 @@ class _Profilescreen extends State<Profilescreen> {
 
                                 const SizedBox(height: 6),
 
-                                Container(
+                               GestureDetector(
+
+                                 onTap: (){
+
+                                   setState(() {
+                                     currentAddressOpen = !currentAddressOpen;
+
+                                   });
+                                 },
+                                   child :Container(
                                   height: 60,
                                   width: double.infinity,
 
@@ -440,7 +593,187 @@ class _Profilescreen extends State<Profilescreen> {
                                       const SizedBox(width: 15),
                                     ],
                                   ),
-                                ),
+                                )
+                               ),
+
+
+
+                                if (currentAddressOpen)
+                                  Container(
+                                      height: 290,
+                                      width: double.infinity,
+
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                        BorderRadius.circular(12),
+
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            color: Colors.grey,
+                                            blurRadius: 5,
+                                            spreadRadius: 1,
+                                          ),
+                                        ],
+                                      ),
+
+
+                                      child: Column(
+
+
+
+                                          children: [
+
+                                            Row(
+                                              crossAxisAlignment: CrossAxisAlignment.start ,
+                                              children: [
+
+                                                const SizedBox(width: 20),
+
+                                                const Text(
+                                                  "Personal Information",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 13,
+                                                  ),
+                                                ),
+
+                                                const SizedBox(width: 15),
+                                              ],
+                                            ),
+
+
+                                            const SizedBox(height: 20,) ,
+
+                                            Column(
+
+                                              children: [
+
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "FullName", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                          prefixIcon: Icon(Icons.person , color: Colors.purpleAccent,) ),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.email, color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+
+                                                const SizedBox(height: 10,) ,
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Phone Number", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                        prefixIcon: Icon(Icons.call , color: Colors.purpleAccent , ) ,),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Alternate Phone", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.phone_android , color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+                                                const SizedBox(height: 10,) ,
+
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Personal Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                        prefixIcon: Icon(Icons.email , color: Colors.purpleAccent,) ,),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Date of Birth", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.calendar_month , color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+                                                const SizedBox(height: 10,) ,
+
+
+                                                Row(
+
+                                                  children: [
+                                                    const Spacer() ,
+
+                                                    ElevatedButton(
+                                                      onPressed: () {},
+                                                      style: ElevatedButton.styleFrom(
+                                                        backgroundColor: Colors.green,
+                                                      ),
+                                                      child: const Row(
+
+                                                        mainAxisSize: MainAxisSize.min,
+
+
+                                                        children: [
+
+                                                          Icon(Icons.arrow_forward, color: Colors.white),
+                                                          SizedBox(width: 5),
+
+                                                          Text("Next", style: TextStyle(color: Colors.white),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    )
+
+
+                                                  ],
+                                                )
+
+
+                                              ],
+                                            )
+                                          ])
+
+                                  ),
+
 
                                 const SizedBox(height: 20),
 
@@ -470,7 +803,17 @@ class _Profilescreen extends State<Profilescreen> {
 
                                 const SizedBox(height: 6),
 
-                                Container(
+                                GestureDetector(
+
+                                    onTap: (){
+
+                                      setState(() {
+                                        permanentAddressOpen = !permanentAddressOpen;
+
+                                      });
+                                    },
+
+                                    child : Container(
                                   height: 60,
                                   width: double.infinity,
 
@@ -530,8 +873,183 @@ class _Profilescreen extends State<Profilescreen> {
                                       const SizedBox(width: 15),
                                     ],
                                   ),
-                                ),
+                                ) ),
 
+                                if (permanentAddressOpen)
+                                  Container(
+                                      height: 290,
+                                      width: double.infinity,
+
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                        BorderRadius.circular(12),
+
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            color: Colors.grey,
+                                            blurRadius: 5,
+                                            spreadRadius: 1,
+                                          ),
+                                        ],
+                                      ),
+
+
+                                      child: Column(
+
+
+
+                                          children: [
+
+                                            Row(
+                                              crossAxisAlignment: CrossAxisAlignment.start ,
+                                              children: [
+
+                                                const SizedBox(width: 20),
+
+                                                const Text(
+                                                  "Personal Information",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 13,
+                                                  ),
+                                                ),
+
+                                                const SizedBox(width: 15),
+                                              ],
+                                            ),
+
+
+                                            const SizedBox(height: 20,) ,
+
+                                            Column(
+
+                                              children: [
+
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "FullName", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                          prefixIcon: Icon(Icons.person , color: Colors.purpleAccent,) ),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.email, color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+
+                                                const SizedBox(height: 10,) ,
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Phone Number", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                        prefixIcon: Icon(Icons.call , color: Colors.purpleAccent , ) ,),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Alternate Phone", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.phone_android , color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+                                                const SizedBox(height: 10,) ,
+
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Personal Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                        prefixIcon: Icon(Icons.email , color: Colors.purpleAccent,) ,),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Date of Birth", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.calendar_month , color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+                                                const SizedBox(height: 10,) ,
+
+
+                                                Row(
+
+                                                  children: [
+                                                    const Spacer() ,
+
+                                                    ElevatedButton(
+                                                      onPressed: () {},
+                                                      style: ElevatedButton.styleFrom(
+                                                        backgroundColor: Colors.green,
+                                                      ),
+                                                      child: const Row(
+
+                                                        mainAxisSize: MainAxisSize.min,
+
+
+                                                        children: [
+
+                                                          Icon(Icons.arrow_forward, color: Colors.white),
+                                                          SizedBox(width: 5),
+
+                                                          Text("Next", style: TextStyle(color: Colors.white),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    )
+
+
+                                                  ],
+                                                )
+
+
+                                              ],
+                                            )
+                                          ])
+
+                                  ),
                                 const SizedBox(height: 20),
 
 
@@ -560,6 +1078,16 @@ class _Profilescreen extends State<Profilescreen> {
 
                                 const SizedBox(height: 6),
 
+                                GestureDetector(
+
+                                    onTap: (){
+
+                                      setState(() {
+                                        managerdetails = !managerdetails;
+
+                                      });
+                                    },
+                                    child :
                                 Container(
                                   height: 60,
                                   width: double.infinity,
@@ -620,10 +1148,189 @@ class _Profilescreen extends State<Profilescreen> {
                                       const SizedBox(width: 15),
                                     ],
                                   ),
-                                ),
+                                ) ),
+
+                                if (managerdetails)
+                                  Container(
+                                      height: 290,
+                                      width: double.infinity,
+
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                        BorderRadius.circular(12),
+
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            color: Colors.grey,
+                                            blurRadius: 5,
+                                            spreadRadius: 1,
+                                          ),
+                                        ],
+                                      ),
+
+
+                                      child: Column(
+
+
+
+                                          children: [
+
+                                            Row(
+                                              crossAxisAlignment: CrossAxisAlignment.start ,
+                                              children: [
+
+                                                const SizedBox(width: 20),
+
+                                                const Text(
+                                                  "Personal Information",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 13,
+                                                  ),
+                                                ),
+
+                                                const SizedBox(width: 15),
+                                              ],
+                                            ),
+
+
+                                            const SizedBox(height: 20,) ,
+
+                                            Column(
+
+                                              children: [
+
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "FullName", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                          prefixIcon: Icon(Icons.person , color: Colors.purpleAccent,) ),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.email, color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+
+                                                const SizedBox(height: 10,) ,
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Phone Number", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                        prefixIcon: Icon(Icons.call , color: Colors.purpleAccent , ) ,),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Alternate Phone", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.phone_android , color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+                                                const SizedBox(height: 10,) ,
+
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Personal Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                        prefixIcon: Icon(Icons.email , color: Colors.purpleAccent,) ,),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Date of Birth", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.calendar_month , color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+                                                const SizedBox(height: 10,) ,
+
+
+                                                Row(
+
+                                                  children: [
+                                                    const Spacer() ,
+
+                                                    ElevatedButton(
+                                                      onPressed: () {},
+                                                      style: ElevatedButton.styleFrom(
+                                                        backgroundColor: Colors.green,
+                                                      ),
+                                                      child: const Row(
+
+                                                        mainAxisSize: MainAxisSize.min,
+
+
+                                                        children: [
+
+                                                          Icon(Icons.arrow_forward, color: Colors.white),
+                                                          SizedBox(width: 5),
+
+                                                          Text("Next", style: TextStyle(color: Colors.white),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    )
+
+
+                                                  ],
+                                                )
+
+
+                                              ],
+                                            )
+                                          ])
+
+                                  ),
+
 
                                 const SizedBox(height: 20),
 
+
+                                // ye valaaa
 
                                 Row(
                                   children: [
@@ -650,6 +1357,16 @@ class _Profilescreen extends State<Profilescreen> {
 
                                 const SizedBox(height: 6),
 
+                                GestureDetector(
+
+                                    onTap: (){
+
+                                      setState(() {
+                                        familymembers = !familymembers;
+
+                                      });
+                                    },
+                                    child :
                                 Container(
                                   height: 60,
                                   width: double.infinity,
@@ -710,8 +1427,183 @@ class _Profilescreen extends State<Profilescreen> {
                                       const SizedBox(width: 15),
                                     ],
                                   ),
-                                ),
+                                ) ),
 
+                                if (familymembers)
+                                  Container(
+                                      height: 290,
+                                      width: double.infinity,
+
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                        BorderRadius.circular(12),
+
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            color: Colors.grey,
+                                            blurRadius: 5,
+                                            spreadRadius: 1,
+                                          ),
+                                        ],
+                                      ),
+
+
+                                      child: Column(
+
+
+
+                                          children: [
+
+                                            Row(
+                                              crossAxisAlignment: CrossAxisAlignment.start ,
+                                              children: [
+
+                                                const SizedBox(width: 20),
+
+                                                const Text(
+                                                  "Personal Information",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 13,
+                                                  ),
+                                                ),
+
+                                                const SizedBox(width: 15),
+                                              ],
+                                            ),
+
+
+                                            const SizedBox(height: 20,) ,
+
+                                            Column(
+
+                                              children: [
+
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "FullName", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                          prefixIcon: Icon(Icons.person , color: Colors.purpleAccent,) ),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.email, color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+
+                                                const SizedBox(height: 10,) ,
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Phone Number", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                        prefixIcon: Icon(Icons.call , color: Colors.purpleAccent , ) ,),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Alternate Phone", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.phone_android , color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+                                                const SizedBox(height: 10,) ,
+
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Personal Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                        prefixIcon: Icon(Icons.email , color: Colors.purpleAccent,) ,),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Date of Birth", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.calendar_month , color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+                                                const SizedBox(height: 10,) ,
+
+
+                                                Row(
+
+                                                  children: [
+                                                    const Spacer() ,
+
+                                                    ElevatedButton(
+                                                      onPressed: () {},
+                                                      style: ElevatedButton.styleFrom(
+                                                        backgroundColor: Colors.green,
+                                                      ),
+                                                      child: const Row(
+
+                                                        mainAxisSize: MainAxisSize.min,
+
+
+                                                        children: [
+
+                                                          Icon(Icons.arrow_forward, color: Colors.white),
+                                                          SizedBox(width: 5),
+
+                                                          Text("Next", style: TextStyle(color: Colors.white),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    )
+
+
+                                                  ],
+                                                )
+
+
+                                              ],
+                                            )
+                                          ])
+
+                                  ),
                                 const SizedBox(height: 20),
 
 
@@ -740,6 +1632,16 @@ class _Profilescreen extends State<Profilescreen> {
 
                                 const SizedBox(height: 6),
 
+                                GestureDetector(
+
+                                    onTap: (){
+
+                                      setState(() {
+                                        emergencycontacts = !emergencycontacts;
+
+                                      });
+                                    },
+                                    child :
                                 Container(
                                   height: 60,
                                   width: double.infinity,
@@ -800,8 +1702,183 @@ class _Profilescreen extends State<Profilescreen> {
                                       const SizedBox(width: 15),
                                     ],
                                   ),
-                                ),
+                                )),
 
+                                if (emergencycontacts)
+                                  Container(
+                                      height: 290,
+                                      width: double.infinity,
+
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                        BorderRadius.circular(12),
+
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            color: Colors.grey,
+                                            blurRadius: 5,
+                                            spreadRadius: 1,
+                                          ),
+                                        ],
+                                      ),
+
+
+                                      child: Column(
+
+
+
+                                          children: [
+
+                                            Row(
+                                              crossAxisAlignment: CrossAxisAlignment.start ,
+                                              children: [
+
+                                                const SizedBox(width: 20),
+
+                                                const Text(
+                                                  "Personal Information",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 13,
+                                                  ),
+                                                ),
+
+                                                const SizedBox(width: 15),
+                                              ],
+                                            ),
+
+
+                                            const SizedBox(height: 20,) ,
+
+                                            Column(
+
+                                              children: [
+
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "FullName", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                          prefixIcon: Icon(Icons.person , color: Colors.purpleAccent,) ),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.email, color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+
+                                                const SizedBox(height: 10,) ,
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Phone Number", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                        prefixIcon: Icon(Icons.call , color: Colors.purpleAccent , ) ,),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Alternate Phone", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.phone_android , color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+                                                const SizedBox(height: 10,) ,
+
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Personal Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                        prefixIcon: Icon(Icons.email , color: Colors.purpleAccent,) ,),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Date of Birth", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.calendar_month , color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+                                                const SizedBox(height: 10,) ,
+
+
+                                                Row(
+
+                                                  children: [
+                                                    const Spacer() ,
+
+                                                    ElevatedButton(
+                                                      onPressed: () {},
+                                                      style: ElevatedButton.styleFrom(
+                                                        backgroundColor: Colors.green,
+                                                      ),
+                                                      child: const Row(
+
+                                                        mainAxisSize: MainAxisSize.min,
+
+
+                                                        children: [
+
+                                                          Icon(Icons.arrow_forward, color: Colors.white),
+                                                          SizedBox(width: 5),
+
+                                                          Text("Next", style: TextStyle(color: Colors.white),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    )
+
+
+                                                  ],
+                                                )
+
+
+                                              ],
+                                            )
+                                          ])
+
+                                  ),
                                 const SizedBox(height: 20),
 
 
@@ -830,7 +1907,16 @@ class _Profilescreen extends State<Profilescreen> {
 
                                 const SizedBox(height: 6),
 
-                                Container(
+                                GestureDetector(
+
+                                    onTap: (){
+
+                                      setState(() {
+                                        organizationaldetails = !organizationaldetails;
+
+                                      });
+                                    },
+                                    child :Container(
                                   height: 60,
                                   width: double.infinity,
 
@@ -890,8 +1976,183 @@ class _Profilescreen extends State<Profilescreen> {
                                       const SizedBox(width: 15),
                                     ],
                                   ),
-                                ),
+                                )),
 
+                                if (organizationaldetails)
+                                  Container(
+                                      height: 290,
+                                      width: double.infinity,
+
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                        BorderRadius.circular(12),
+
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            color: Colors.grey,
+                                            blurRadius: 5,
+                                            spreadRadius: 1,
+                                          ),
+                                        ],
+                                      ),
+
+
+                                      child: Column(
+
+
+
+                                          children: [
+
+                                            Row(
+                                              crossAxisAlignment: CrossAxisAlignment.start ,
+                                              children: [
+
+                                                const SizedBox(width: 20),
+
+                                                const Text(
+                                                  "Personal Information",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 13,
+                                                  ),
+                                                ),
+
+                                                const SizedBox(width: 15),
+                                              ],
+                                            ),
+
+
+                                            const SizedBox(height: 20,) ,
+
+                                            Column(
+
+                                              children: [
+
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "FullName", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                          prefixIcon: Icon(Icons.person , color: Colors.purpleAccent,) ),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.email, color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+
+                                                const SizedBox(height: 10,) ,
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Phone Number", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                        prefixIcon: Icon(Icons.call , color: Colors.purpleAccent , ) ,),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Alternate Phone", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.phone_android , color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+                                                const SizedBox(height: 10,) ,
+
+
+                                                Row(
+
+                                                  children: [
+
+                                                    const SizedBox(width: 40,) ,
+                                                    SizedBox(width: 450,
+                                                      height: 60,
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Personal Email", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),),
+                                                        prefixIcon: Icon(Icons.email , color: Colors.purpleAccent,) ,),),
+                                                    ),
+
+                                                    const SizedBox(width: 30),
+
+                                                    SizedBox(
+                                                      width: 450,
+                                                      height: 60,
+
+
+                                                      child: TextField(decoration: InputDecoration(hintText: "Date of Birth", border: OutlineInputBorder(borderRadius: BorderRadius.circular(8),
+                                                      ), prefixIcon: Icon(Icons.calendar_month , color: Colors.purpleAccent,) , ),),
+                                                    ),
+
+                                                  ],
+                                                ) ,
+
+                                                const SizedBox(height: 10,) ,
+
+
+                                                Row(
+
+                                                  children: [
+                                                    const Spacer() ,
+
+                                                    ElevatedButton(
+                                                      onPressed: () {},
+                                                      style: ElevatedButton.styleFrom(
+                                                        backgroundColor: Colors.green,
+                                                      ),
+                                                      child: const Row(
+
+                                                        mainAxisSize: MainAxisSize.min,
+
+
+                                                        children: [
+
+                                                          Icon(Icons.arrow_forward, color: Colors.white),
+                                                          SizedBox(width: 5),
+
+                                                          Text("Next", style: TextStyle(color: Colors.white),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    )
+
+
+                                                  ],
+                                                )
+
+
+                                              ],
+                                            )
+                                          ])
+
+                                  ),
                                 const SizedBox(height: 30),
                               ],
                             ),
@@ -906,6 +2167,8 @@ class _Profilescreen extends State<Profilescreen> {
           ),
         ],
       ),
+
+
     );
   }
 }
