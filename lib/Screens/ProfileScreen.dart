@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hrms_clone/Bars/sidebar.dart';
+import 'package:hrms_clone/Manager/FireManager.dart';
 
 class Profilescreen extends StatefulWidget {
   const Profilescreen({super.key});
@@ -13,13 +14,51 @@ class _Profilescreen extends State<Profilescreen> {
 
   int openSection = -1;
 
+  TextEditingController fullname = TextEditingController() ;
+  TextEditingController email = TextEditingController() ;
+  TextEditingController phone = TextEditingController() ;
+  TextEditingController altphn = TextEditingController() ;
+  TextEditingController personalemail = TextEditingController() ;
+  TextEditingController dob = TextEditingController() ;
+  TextEditingController caddress = TextEditingController() ;
+  TextEditingController cstate = TextEditingController() ;
+  TextEditingController ccity = TextEditingController() ;
+  TextEditingController cpostalCode = TextEditingController() ;
+  TextEditingController paddress = TextEditingController() ;
+  TextEditingController pstate = TextEditingController() ;
+  TextEditingController pcity = TextEditingController() ;
+  TextEditingController ppostalCode = TextEditingController() ;
+  TextEditingController ename = TextEditingController() ;
+  TextEditingController erelation = TextEditingController() ;
+  TextEditingController ephone = TextEditingController() ;
+  TextEditingController edob = TextEditingController() ;
+  TextEditingController eename = TextEditingController() ;
+  TextEditingController eerelation = TextEditingController() ;
+  TextEditingController eephone = TextEditingController() ;
+  TextEditingController familyname = TextEditingController();
+  TextEditingController familyrelation = TextEditingController();
+  TextEditingController familyno = TextEditingController();
+  TextEditingController familydob = TextEditingController();
+
+
+
+  final formKey = GlobalKey<FormState>();
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
+
+
+      body:  Form(
+        key: formKey,
+
+     child : Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const sidebar(),
+
 
           Expanded(
             child: Container(
@@ -304,6 +343,7 @@ class _Profilescreen extends State<Profilescreen> {
 
 
                                 if (openSection == 0)
+
                                   Container(
                                     width: double.infinity,
                                     margin: const EdgeInsets.only(top: 6),
@@ -335,20 +375,24 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: fullname,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Full name is required";
+                                                  }
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
                                                   hintText: "FullName",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.person,
-                                                    color:
-                                                    Colors.purpleAccent,
+                                                    color: Colors.purpleAccent,
                                                   ),
                                                 ),
                                               ),
@@ -359,23 +403,29 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
-                                                decoration: InputDecoration(
-                                                  hintText: "Email",
+                                              child: TextFormField(
+                                                controller: email,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Email is required";
+                                                  }
+
+                                                  return null;
+                                                },
+
+                                                decoration: InputDecoration(hintText: "Email",
                                                   border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
-                                                  ),
-                                                  prefixIcon: const Icon(
-                                                    Icons.email,
-                                                    color:
-                                                    Colors.purpleAccent,
-                                                  ),
+                                                  OutlineInputBorder(borderRadius: BorderRadius.circular(8,),),
+
+                                                  prefixIcon: const Icon(Icons.email, color: Colors.purpleAccent,),
                                                 ),
+
+
+
                                               ),
+
+
                                             ),
                                           ],
                                         ),
@@ -390,6 +440,7 @@ class _Profilescreen extends State<Profilescreen> {
                                               width: 450,
                                               height: 60,
                                               child: TextField(
+                                                controller: phone,
                                                 decoration: InputDecoration(
                                                   hintText: "Phone Number",
                                                   border:
@@ -414,6 +465,7 @@ class _Profilescreen extends State<Profilescreen> {
                                               width: 450,
                                               height: 60,
                                               child: TextField(
+                                                controller: altphn,
                                                 decoration: InputDecoration(
                                                   hintText: "Alternate Phone",
                                                   border:
@@ -440,6 +492,7 @@ class _Profilescreen extends State<Profilescreen> {
                                               width: 450,
                                               height: 60,
                                               child: TextField(
+                                                controller: personalemail,
                                                 decoration: InputDecoration(
                                                   hintText: "Personal Email",
                                                   border:
@@ -464,6 +517,7 @@ class _Profilescreen extends State<Profilescreen> {
                                               width: 450,
                                               height: 60,
                                               child: TextField(
+                                                controller: dob,
                                                 decoration: InputDecoration(
                                                   hintText: "Date of Birth",
                                                   border:
@@ -491,7 +545,14 @@ class _Profilescreen extends State<Profilescreen> {
                                             const Spacer(),
 
                                             ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+
+                                                if (formKey.currentState!.validate()) {
+                                                  setState(() {
+                                                    openSection = 1;
+                                                  });
+                                                }
+                                              },
                                               style: ElevatedButton.styleFrom(
                                                 backgroundColor: Colors.green,
                                               ),
@@ -654,15 +715,20 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 930,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: caddress,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Current address is required";
+                                                  }
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
                                                   hintText: "Current Address",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.location_city,
@@ -683,15 +749,20 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: cstate,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Current state is required";
+                                                  }
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
                                                   hintText: "Current State",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.location_city_outlined,
@@ -706,15 +777,20 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: ccity,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Current city is required";
+                                                  }
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
                                                   hintText: "Current City",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.home,
@@ -735,15 +811,22 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: cpostalCode,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Postal code is required";
+                                                  }
+
+
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
                                                   hintText: "Postal Code",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.people,
@@ -756,7 +839,15 @@ class _Profilescreen extends State<Profilescreen> {
                                             const SizedBox(width: 30),
 
                                             ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+
+                                                if (formKey.currentState!.validate()) {
+                                                  setState(() {
+                                                    openSection = 2;
+                                                  });
+                                                }
+
+                                              },
                                               style: ElevatedButton.styleFrom(
                                                 backgroundColor: Colors.green,
                                               ),
@@ -915,16 +1006,20 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 930,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: paddress,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Permanent address is required";
+                                                  }
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
-                                                  hintText:
-                                                  "Permanent Address",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  hintText: "Permanent Address",
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.location_city,
@@ -945,15 +1040,20 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: pstate,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Permanent state is required";
+                                                  }
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
                                                   hintText: "Permanent State",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.location_city_outlined,
@@ -968,15 +1068,20 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: pcity,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Permanent city is required";
+                                                  }
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
                                                   hintText: "Permanent City",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.home,
@@ -997,15 +1102,25 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: ppostalCode,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Postal code is required";
+                                                  }
+
+                                                  if (!RegExp(r'^[0-9]{6}$').hasMatch(value.trim())) {
+                                                    return "Enter 6 digit postal code";
+                                                  }
+
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
                                                   hintText: "Postal Code",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.people,
@@ -1018,7 +1133,13 @@ class _Profilescreen extends State<Profilescreen> {
                                             const SizedBox(width: 30),
 
                                             ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                if (formKey.currentState!.validate()) {
+                                                  setState(() {
+                                                    openSection = 3;
+                                                  });
+                                                }
+                                              },
                                               style: ElevatedButton.styleFrom(
                                                 backgroundColor: Colors.green,
                                               ),
@@ -1194,7 +1315,11 @@ class _Profilescreen extends State<Profilescreen> {
                                         const SizedBox(width: 30),
 
                                         ElevatedButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            setState(() {
+                                              openSection = 4;
+                                            });
+                                          },
                                           style: ElevatedButton.styleFrom(
                                             backgroundColor: Colors.green,
                                           ),
@@ -1351,20 +1476,24 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: erelation,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Relation is required";
+                                                  }
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
-                                                  hintText: "Name",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  hintText: "Relation",
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
-                                                    Icons.person,
-                                                    color:
-                                                    Colors.pink,
+                                                    Icons.family_restroom,
+                                                    color: Colors.pink,
                                                   ),
                                                 ),
                                               ),
@@ -1375,20 +1504,24 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: erelation,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Relation is required";
+                                                  }
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
                                                   hintText: "Relation",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.family_restroom,
-                                                    color:
-                                                    Colors.pink,
+                                                    color: Colors.pink,
                                                   ),
                                                 ),
                                               ),
@@ -1405,20 +1538,26 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: ephone,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Phone number is required";
+                                                  }
+
+
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
                                                   hintText: "Phone Number",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.call,
-                                                    color:
-                                                    Colors.pink,
+                                                    color: Colors.pink,
                                                   ),
                                                 ),
                                               ),
@@ -1429,20 +1568,24 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: edob,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Date of birth is required";
+                                                  }
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
                                                   hintText: "Date of Birth",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.calendar_month,
-                                                    color:
-                                                    Colors.pink,
+                                                    color: Colors.pink,
                                                   ),
                                                 ),
                                               ),
@@ -1457,7 +1600,13 @@ class _Profilescreen extends State<Profilescreen> {
                                             const Spacer(),
 
                                             ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                if (formKey.currentState!.validate()) {
+                                                  setState(() {
+                                                    openSection = 5;
+                                                  });
+                                                }
+                                              },
                                               style: ElevatedButton.styleFrom(
                                                 backgroundColor: Colors.green,
                                               ),
@@ -1619,15 +1768,20 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: eename,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Name is required";
+                                                  }
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
                                                   hintText: "Name",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.person,
@@ -1642,15 +1796,20 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: eerelation,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Relation is required";
+                                                  }
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
                                                   hintText: "Relation",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.family_restroom,
@@ -1671,15 +1830,22 @@ class _Profilescreen extends State<Profilescreen> {
                                             SizedBox(
                                               width: 450,
                                               height: 60,
-                                              child: TextField(
+                                              child: TextFormField(
+                                                controller: eephone,
+
+                                                validator: (value) {
+                                                  if (value == null || value.trim().isEmpty) {
+                                                    return "Phone number is required";
+                                                  }
+
+
+                                                  return null;
+                                                },
+
                                                 decoration: InputDecoration(
                                                   hintText: "Phone Number",
-                                                  border:
-                                                  OutlineInputBorder(
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                      8,
-                                                    ),
+                                                  border: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(8),
                                                   ),
                                                   prefixIcon: const Icon(
                                                     Icons.call,
@@ -1692,7 +1858,15 @@ class _Profilescreen extends State<Profilescreen> {
                                             const SizedBox(width: 30),
 
                                             ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+
+                                                if (formKey.currentState!.validate()) {
+                                                  setState(() {
+                                                    openSection = 6;
+                                                  });
+                                                }
+
+                                              },
                                               style: ElevatedButton.styleFrom(
                                                 backgroundColor: Colors.green,
                                               ),
@@ -1990,6 +2164,65 @@ class _Profilescreen extends State<Profilescreen> {
                           ),
                         ],
                       ),
+
+
+                      const SizedBox(height: 15),
+
+                      Center(
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            try {
+                              await Firemanager().adddata(
+                                fullname.text,
+                                email.text,
+                                phone.text,
+                                altphn.text,
+                                personalemail.text,
+                                dob.text,
+
+                                caddress.text,
+                                cstate.text,
+                                ccity.text,
+                                cpostalCode.text,
+
+                                paddress.text,
+                                pstate.text,
+                                pcity.text,
+                                ppostalCode.text,
+
+                                familyname.text,
+                                familyrelation.text,
+                                familyno.text,
+                                familydob.text,
+
+                                eename.text,
+                                eerelation.text,
+                                eephone.text,
+                              );
+
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("Profile added successfully"),
+                                ),
+                              );
+                            } catch (e) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text("Error: $e"),
+                                ),
+                              );
+                            }
+                          },
+
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.green,
+                          ),
+
+                          child: const Text("Add", style: TextStyle(color: Colors.white,),),
+                        ),
+                      ),
+
+
                     ],
                   ),
                 ),
@@ -1997,7 +2230,7 @@ class _Profilescreen extends State<Profilescreen> {
             ),
           ),
         ],
-      ),
+      ), )
     );
   }
 }
